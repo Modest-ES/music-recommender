@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api',
-  timeout: 60000,
+  baseURL: 'http://localhost:10000/api',
+  timeout: 90000,
 });
 
 const getLikedTracks = () => {
