@@ -26,11 +26,11 @@ import {
   
     return (
       <Box>
-        <Typography variant="h5" gutterBottom>My Playlists</Typography>
+        <Typography variant="h5" gutterBottom>Плейлисты</Typography>
         
         <Tabs value={tabValue} onChange={(e, newValue) => setTabValue(newValue)}>
-          <Tab label={`Liked (${likedTracks.length})`} />
-          <Tab label={`Disliked (${dislikedTracks.length})`} />
+          <Tab label={`Понравились (${likedTracks.length})`} />
+          <Tab label={`Не понравились (${dislikedTracks.length})`} />
         </Tabs>
         
         <TabPanel value={tabValue} index={0}>
@@ -39,9 +39,9 @@ import {
                 <TableHead>
                     <TableRow>
                         <TableCell>ID</TableCell>
-                        <TableCell>Track Info</TableCell>
-                        <TableCell>Audio Features</TableCell>
-                        <TableCell>Remove</TableCell>
+                        <TableCell>Информация о треке</TableCell>
+                        <TableCell>Параметры аудио</TableCell>
+                        <TableCell>Удалить</TableCell>
                     </TableRow>
                 </TableHead>
               <TableBody>
@@ -58,12 +58,12 @@ import {
                                 
                                 {/* Line 2: Album, duration, genre, popularity */}
                                 <Typography variant="body2">
-                                    Album: {track.album}, {formatDuration(track.duration)}, Genre: {track.genre}, Popularity: {track.popularity}%
+                                    Альбом: {track.album}, {formatDuration(track.duration)}, Жанр: {track.genre}, Популярность: {track.popularity}%
                                 </Typography>
                                 
                                 {/* Line 3: Key, mode, signature, tempo, loudness */}
                                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                                    Key: {track.key} {track.mode}, {track.signature} time, {track.tempo} BPM, {track.loudness.toFixed(2)} dB
+                                    Тональность: {track.key} {track.mode}, Размер такта {track.signature}, {track.tempo} BPM, {track.loudness.toFixed(2)} dB
                                 </Typography>
                             </Box>
                         </TableCell>
@@ -71,13 +71,13 @@ import {
                         {/* Radar Chart Column */}
                         <TableCell sx={{ width: '200px' }}>
                             <RadarChart features={{
-                                A: track.acousticness,
-                                D: track.danceability,
-                                E: track.energy,
-                                I: track.instrumentalness,
-                                S: track.speechiness,
-                                L: track.liveness,
-                                V: track.valence
+                                А: track.acousticness,
+                                Т: track.danceability,
+                                Э: track.energy,
+                                И: track.instrumentalness,
+                                Р: track.speechiness,
+                                Ж: track.liveness,
+                                П: track.valence
                             }} />
                         </TableCell>
                         
@@ -100,9 +100,9 @@ import {
               <TableHead>
                 <TableRow>
                     <TableCell>ID</TableCell>
-                    <TableCell>Track Info</TableCell>
-                    <TableCell>Audio Features</TableCell>
-                    <TableCell>Remove</TableCell>
+                    <TableCell>Информация о треке</TableCell>
+                    <TableCell>Параметры аудио</TableCell>
+                    <TableCell>Удалить</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -119,12 +119,12 @@ import {
                                 
                                 {/* Line 2: Album, duration, genre, popularity */}
                                 <Typography variant="body2">
-                                    Album: {track.album}, {formatDuration(track.duration)}, Genre: {track.genre}, Popularity: {track.popularity}%
+                                    Альбом: {track.album}, {formatDuration(track.duration)}, Жанр: {track.genre}, Популярность: {track.popularity}%
                                 </Typography>
                                 
                                 {/* Line 3: Key, mode, signature, tempo, loudness */}
                                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                                    Key: {track.key} {track.mode}, {track.signature} time, {track.tempo} BPM, {track.loudness.toFixed(2)} dB
+                                    Тональность: {track.key} {track.mode}, Размер такта {track.signature}, {track.tempo} BPM, {track.loudness.toFixed(2)} dB
                                 </Typography>
                             </Box>
                         </TableCell>
@@ -132,13 +132,13 @@ import {
                         {/* Radar Chart Column */}
                         <TableCell sx={{ width: '200px' }}>
                             <RadarChart features={{
-                                A: track.acousticness,
-                                D: track.danceability,
-                                E: track.energy,
-                                I: track.instrumentalness,
-                                S: track.speechiness,
-                                L: track.liveness,
-                                V: track.valence
+                                А: track.acousticness,
+                                Т: track.danceability,
+                                Э: track.energy,
+                                И: track.instrumentalness,
+                                Р: track.speechiness,
+                                Ж: track.liveness,
+                                П: track.valence
                             }} />
                         </TableCell>
                         

@@ -20,13 +20,13 @@ ChartJS.register(
 
 // Mapping of short labels to full names
 const featureNames = {
-  A: 'Acousticness',
-  D: 'Danceability',
-  E: 'Energy',
-  I: 'Instrumentalness',
-  S: 'Speechiness',
-  L: 'Liveness',
-  V: 'Valence'
+  А: 'Акустичность',
+  Т: 'Танцевальность',
+  Э: 'Энергичность',
+  И: 'Инструментальность',
+  Р: 'Разговорность',
+  Ж: 'Живость',
+  П: 'Позитивность'
 };
 
 export function RadarChart({ features }) {
@@ -38,7 +38,7 @@ export function RadarChart({ features }) {
     labels: Object.keys(features), // Uses the short labels (A, D, E, etc.)
     datasets: [
       {
-        label: 'Audio Features',
+        label: 'Параметры аудио',
         data: Object.values(features),
         backgroundColor: 'rgba(29, 185, 84, 0.2)',
         borderColor: 'rgba(29, 185, 84, 1)',

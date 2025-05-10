@@ -18,10 +18,10 @@ const genres = [
 ];
 
 const durationOptions = [
-  { label: 'Short (<2.5 min)', value: [0, 150] },
-  { label: 'Medium-Short (2.5-3.5 min)', value: [150, 210] },
-  { label: 'Medium-Long (3.5-5 min)', value: [210, 300] },
-  { label: 'Long (>5 min)', value: [300, 1200] }
+  { label: 'Короткие (<2.5 мин)', value: [0, 150] },
+  { label: 'Средне-короткие (2.5-3.5 мин)', value: [150, 210] },
+  { label: 'Средне-длинные (3.5-5 мин)', value: [210, 300] },
+  { label: 'Длинные (>5 мин)', value: [300, 1200] }
 ];
 
 const keys = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
@@ -107,7 +107,7 @@ export default function PreferenceForm({ onSubmit, loading }) {
   return (
     <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
       {/* Genre Selection */}
-      <Typography variant="h6" gutterBottom>Genres</Typography>
+      <Typography variant="h6" gutterBottom>Выберите жанры</Typography>
       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 3 }}>
         {genres.map((genre) => (
           <Chip
@@ -126,7 +126,7 @@ export default function PreferenceForm({ onSubmit, loading }) {
       </Box>
       {/* Genre Strictness */}
       <Typography variant="subtitle1" gutterBottom>
-        Genre Strictness: {localPrefs.genreStrictness}
+        Влияние жанра: {localPrefs.genreStrictness}
       </Typography>
       <Slider
         value={localPrefs.genreStrictness}
@@ -134,9 +134,9 @@ export default function PreferenceForm({ onSubmit, loading }) {
         min={1}
         max={10}
         marks={[
-          { value: 1, label: 'Lenient' },
-          { value: 5, label: 'Medium' },
-          { value: 10, label: 'Strict' }
+          { value: 1, label: 'Слабое' },
+          { value: 5, label: 'Среднее' },
+          { value: 10, label: 'Сильное' }
         ]}
         valueLabelDisplay="auto"
         sx={{ mb: 3 }}
@@ -146,7 +146,7 @@ export default function PreferenceForm({ onSubmit, loading }) {
       {/* Liked Genre Influence */}
 
       <Typography variant="subtitle1" gutterBottom>
-        Liked Genres Influence: {localPrefs.likedGenreInfluence}
+        Влияние понравившихся жанров: {localPrefs.likedGenreInfluence}
       </Typography>
       <Slider
         value={localPrefs.likedGenreInfluence}
@@ -154,9 +154,9 @@ export default function PreferenceForm({ onSubmit, loading }) {
         min={1}
         max={10}
         marks={[
-          { value: 1, label: 'Low' },
-          { value: 5, label: 'Medium' },
-          { value: 10, label: 'High' }
+          { value: 1, label: 'Слабое' },
+          { value: 5, label: 'Среднее' },
+          { value: 10, label: 'Сильное' }
         ]}
         valueLabelDisplay="auto"
         sx={{ mb: 3 }}
@@ -165,7 +165,7 @@ export default function PreferenceForm({ onSubmit, loading }) {
       {/* Disliked Genre Influence */}
 
       <Typography variant="subtitle1" gutterBottom>
-        Disliked Genres Influence: {localPrefs.dislikedGenreInfluence}
+        Влияние не понравившихся жанров: {localPrefs.dislikedGenreInfluence}
       </Typography>
       <Slider
         value={localPrefs.dislikedGenreInfluence}
@@ -173,9 +173,9 @@ export default function PreferenceForm({ onSubmit, loading }) {
         min={1}
         max={10}
         marks={[
-          { value: 1, label: 'Low' },
-          { value: 5, label: 'Medium' },
-          { value: 10, label: 'High' }
+          { value: 1, label: 'Слабое' },
+          { value: 5, label: 'Среднее' },
+          { value: 10, label: 'Сильное' }
         ]}
         valueLabelDisplay="auto"
         sx={{ mb: 3 }}
@@ -184,7 +184,7 @@ export default function PreferenceForm({ onSubmit, loading }) {
       {/* Liked Artist Influence */}
 
       <Typography variant="subtitle1" gutterBottom>
-        Liked Artists Influence: {localPrefs.likedArtistInfluence}
+        Влияние понравившихся исполнителей: {localPrefs.likedArtistInfluence}
       </Typography>
       <Slider
         value={localPrefs.likedArtistInfluence}
@@ -192,9 +192,9 @@ export default function PreferenceForm({ onSubmit, loading }) {
         min={1}
         max={10}
         marks={[
-          { value: 1, label: 'Low' },
-          { value: 5, label: 'Medium' },
-          { value: 10, label: 'High' }
+          { value: 1, label: 'Слабое' },
+          { value: 5, label: 'Среднее' },
+          { value: 10, label: 'Сильное' }
         ]}
         valueLabelDisplay="auto"
         sx={{ mb: 3 }}
@@ -203,7 +203,7 @@ export default function PreferenceForm({ onSubmit, loading }) {
       {/* Disliked Artist Influence */}
 
       <Typography variant="subtitle1" gutterBottom>
-        Disliked Artists Influence: {localPrefs.dislikedArtistInfluence}
+        Влияние не понравившихся исполнителей: {localPrefs.dislikedArtistInfluence}
       </Typography>
       <Slider
         value={localPrefs.dislikedArtistInfluence}
@@ -211,9 +211,9 @@ export default function PreferenceForm({ onSubmit, loading }) {
         min={1}
         max={10}
         marks={[
-          { value: 1, label: 'Low' },
-          { value: 5, label: 'Medium' },
-          { value: 10, label: 'High' }
+          { value: 1, label: 'Слабое' },
+          { value: 5, label: 'Среднее' },
+          { value: 10, label: 'Сильное' }
         ]}
         valueLabelDisplay="auto"
         sx={{ mb: 3 }}
@@ -222,7 +222,7 @@ export default function PreferenceForm({ onSubmit, loading }) {
 
       {/* Year Range */}
       <Typography variant="h6" gutterBottom>
-        Release Year: {localPrefs.yearRange[0]} - {localPrefs.yearRange[1]}
+        Год выпуска трека: {localPrefs.yearRange[0]} - {localPrefs.yearRange[1]}
       </Typography>
       <Slider
         value={localPrefs.yearRange}
@@ -234,7 +234,7 @@ export default function PreferenceForm({ onSubmit, loading }) {
       />
       {/* Year Strictness */}
       <Typography variant="subtitle1" gutterBottom>
-        Year Strictness: {localPrefs.yearStrictness}
+        Влияние года выпуска: {localPrefs.yearStrictness}
       </Typography>
       <Slider
         value={localPrefs.yearStrictness}
@@ -242,9 +242,9 @@ export default function PreferenceForm({ onSubmit, loading }) {
         min={1}
         max={10}
         marks={[
-          { value: 1, label: 'Lenient' },
-          { value: 5, label: 'Medium' },
-          { value: 10, label: 'Strict' }
+          { value: 1, label: 'Слабое' },
+          { value: 5, label: 'Среднее' },
+          { value: 10, label: 'Сильное' }
         ]}
         valueLabelDisplay="auto"
         sx={{ mb: 3 }}
@@ -253,7 +253,7 @@ export default function PreferenceForm({ onSubmit, loading }) {
 
       {/* Tempo Range */}
       <Typography variant="h6" gutterBottom>
-        Tempo (BPM): {localPrefs.tempoRange[0]} - {localPrefs.tempoRange[1]}
+        Темп (ударов в минуту / BPM): {localPrefs.tempoRange[0]} - {localPrefs.tempoRange[1]}
       </Typography>
       <Slider
         value={localPrefs.tempoRange}
@@ -265,7 +265,7 @@ export default function PreferenceForm({ onSubmit, loading }) {
       />
       {/* Tempo strictness */}
       <Typography variant="subtitle1" gutterBottom>
-        Tempo Strictness: {localPrefs.tempoStrictness}
+        Влияние темпа: {localPrefs.tempoStrictness}
       </Typography>
       <Slider
         value={localPrefs.tempoStrictness}
@@ -273,9 +273,9 @@ export default function PreferenceForm({ onSubmit, loading }) {
         min={1}
         max={10}
         marks={[
-          { value: 1, label: 'Lenient' },
-          { value: 5, label: 'Medium' },
-          { value: 10, label: 'Strict' }
+          { value: 1, label: 'Слабое' },
+          { value: 5, label: 'Среднее' },
+          { value: 10, label: 'Сильное' }
         ]}
         valueLabelDisplay="auto"
         sx={{ mb: 3 }}
@@ -283,7 +283,7 @@ export default function PreferenceForm({ onSubmit, loading }) {
       <Divider sx={{ my: 3 }} />
 
       {/* Duration */}
-      <Typography variant="h6" gutterBottom>Duration</Typography>
+      <Typography variant="h6" gutterBottom>Длина трека</Typography>
       <ToggleButtonGroup
         value={localPrefs.duration}
         exclusive
@@ -311,7 +311,7 @@ export default function PreferenceForm({ onSubmit, loading }) {
       </ToggleButtonGroup>
       {/* Duration Strictness */}
       <Typography variant="subtitle1" gutterBottom>
-        Duration Strictness: {localPrefs.durationStrictness}
+        Влияние длины трека: {localPrefs.durationStrictness}
       </Typography>
       <Slider
         value={localPrefs.durationStrictness}
@@ -319,9 +319,9 @@ export default function PreferenceForm({ onSubmit, loading }) {
         min={1}
         max={10}
         marks={[
-          { value: 1, label: 'Lenient' },
-          { value: 5, label: 'Medium' },
-          { value: 10, label: 'Strict' }
+          { value: 1, label: 'Слабое' },
+          { value: 5, label: 'Среднее' },
+          { value: 10, label: 'Сильное' }
         ]}
         valueLabelDisplay="auto"
         sx={{ mb: 3 }}
@@ -329,7 +329,7 @@ export default function PreferenceForm({ onSubmit, loading }) {
       <Divider sx={{ my: 3 }} />
 
       {/* Key */}
-      <Typography variant="h6" gutterBottom>Key</Typography>
+      <Typography variant="h6" gutterBottom>Тональность (нота)</Typography>
       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 2 }}>
         {keys.map((key) => (
           <Chip
@@ -345,9 +345,9 @@ export default function PreferenceForm({ onSubmit, loading }) {
             })}
           />
         ))}
-        <Tooltip title="Clear key selection">
+        <Tooltip title="Очистить значение тональности (ноты)">
           <Chip
-            label="No Preference"
+            label="Нет предпочтений"
             clickable
             color={localPrefs.selectedKeys.length === 0 ? 'primary' : 'default'}
             onClick={() => setLocalPrefs({...localPrefs, selectedKeys: []})}
@@ -357,7 +357,7 @@ export default function PreferenceForm({ onSubmit, loading }) {
       <Divider sx={{ my: 3 }} />
 
       {/* Mode */}
-      <Typography variant="h6" gutterBottom>Mode</Typography>
+      <Typography variant="h6" gutterBottom>Тональность (мажор/минор)</Typography>
       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 2 }}>
         {modes.map((mode) => (
           <Chip
@@ -373,9 +373,9 @@ export default function PreferenceForm({ onSubmit, loading }) {
             })}
           />
         ))}
-        <Tooltip title="Clear mode selection">
+        <Tooltip title="Очистить значение тональности (мажор/минор)">
           <Chip
-            label="No Preference"
+            label="Нет предпочтений"
             clickable
             color={localPrefs.selectedModes.length === 0 ? 'primary' : 'default'}
             onClick={() => setLocalPrefs({...localPrefs, selectedModes: []})}
@@ -385,7 +385,7 @@ export default function PreferenceForm({ onSubmit, loading }) {
       <Divider sx={{ my: 3 }} />
 
       {/* Signature */}
-      <Typography variant="h6" gutterBottom>Time Signature</Typography>
+      <Typography variant="h6" gutterBottom>Размер такта</Typography>
       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 2 }}>
         {signatures.map((sig) => (
           <Chip
@@ -401,9 +401,9 @@ export default function PreferenceForm({ onSubmit, loading }) {
             })}
           />
         ))}
-        <Tooltip title="Clear time signature selection">
+        <Tooltip title="Очистить значение размера такта">
           <Chip
-            label="No Preference"
+            label="Нет предпочтений"
             clickable
             color={localPrefs.selectedSignatures.length === 0 ? 'primary' : 'default'}
             onClick={() => setLocalPrefs({...localPrefs, selectedSignatures: []})}
@@ -413,15 +413,15 @@ export default function PreferenceForm({ onSubmit, loading }) {
       <Divider sx={{ my: 3 }} />
 
       {[
-        { name: 'popularity', label: 'Popularity', value: localPrefs.popularity.toFixed(0) },
-        { name: 'loudness', label: 'Loudness (dB)', value: (-60 + (localPrefs.loudness / 100) * 60).toFixed(1) },
-        { name: 'acousticness', label: 'Acousticness', value: (localPrefs.acousticness / 100).toFixed(2) },
-        { name: 'danceability', label: 'Danceability', value: (localPrefs.danceability / 100).toFixed(2) },
-        { name: 'energy', label: 'Energy', value: (localPrefs.energy / 100).toFixed(2) },
-        { name: 'liveness', label: 'Liveness', value: (localPrefs.liveness / 100).toFixed(2) },
-        { name: 'instrumentalness', label: 'Instrumentalness', value: (localPrefs.instrumentalness / 100).toFixed(2) },
-        { name: 'speechiness', label: 'Speechiness', value: (localPrefs.speechiness / 100).toFixed(2) },
-        { name: 'valence', label: 'Valence (Positivity)', value: (localPrefs.valence / 100).toFixed(2) }
+        { name: 'popularity', label: 'Популярность (%)', value: localPrefs.popularity.toFixed(0) },
+        { name: 'loudness', label: 'Средняя громкость (dB)', value: (-60 + (localPrefs.loudness / 100) * 60).toFixed(1) },
+        { name: 'acousticness', label: 'Акустичность', value: (localPrefs.acousticness / 100).toFixed(2) },
+        { name: 'danceability', label: 'Танцевальность', value: (localPrefs.danceability / 100).toFixed(2) },
+        { name: 'energy', label: 'Энергичность', value: (localPrefs.energy / 100).toFixed(2) },
+        { name: 'liveness', label: 'Живость', value: (localPrefs.liveness / 100).toFixed(2) },
+        { name: 'instrumentalness', label: 'Инструментальность', value: (localPrefs.instrumentalness / 100).toFixed(2) },
+        { name: 'speechiness', label: 'Разговорность', value: (localPrefs.speechiness / 100).toFixed(2) },
+        { name: 'valence', label: 'Позитивность', value: (localPrefs.valence / 100).toFixed(2) }
       ].map(({ name, label, value }) => (
         <Box key={name} mb={3}>
           <Typography gutterBottom>
@@ -445,7 +445,7 @@ export default function PreferenceForm({ onSubmit, loading }) {
         fullWidth
         sx={{ mt: 4, py: 2 }}
       >
-        {loading ? <CircularProgress size={24} /> : 'Get Recommendations'}
+        {loading ? <CircularProgress size={24} /> : 'Получить рекомендации'}
       </Button>
     </Box>
   );

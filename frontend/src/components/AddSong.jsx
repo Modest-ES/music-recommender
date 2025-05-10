@@ -59,11 +59,11 @@ export default function AddSong({ onAddSong }) {
     
     try {
       await onAddSong(formValues);
-      setSnackbarMessage(`Song: ${formValues.artist} - ${formValues.track} was successfully added`);
+      setSnackbarMessage(`Трек: ${formValues.artist} - ${formValues.track} успешно добавлен`);
       setSnackbarSeverity('success');
       setFormValues(defaultValues);
     } catch (error) {
-      setSnackbarMessage('Failed to add song. Please try again.');
+      setSnackbarMessage('Ошибка добавления трека');
       setSnackbarSeverity('error');
     } finally {
       setOpenSnackbar(true);
@@ -78,12 +78,12 @@ export default function AddSong({ onAddSong }) {
 
   return (
     <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
-      <Typography variant="h5" gutterBottom>Add New Song</Typography>
+      <Typography variant="h5" gutterBottom>Добавить новый трек</Typography>
       
       {/* Required Fields */}
       <TextField
         fullWidth
-        label="Track Name"
+        label="Название трека"
         name="track"
         value={formValues.track}
         onChange={handleInputChange}
@@ -92,7 +92,7 @@ export default function AddSong({ onAddSong }) {
       />
       <TextField
         fullWidth
-        label="Artist"
+        label="Исполнитель(и)"
         name="artist"
         value={formValues.artist}
         onChange={handleInputChange}
@@ -101,7 +101,7 @@ export default function AddSong({ onAddSong }) {
       />
       <TextField
         fullWidth
-        label="Genre"
+        label="Жанр"
         name="genre"
         value={formValues.genre}
         onChange={handleInputChange}
@@ -114,7 +114,7 @@ export default function AddSong({ onAddSong }) {
       {/* Optional Fields */}
       <TextField
         fullWidth
-        label="Album"
+        label="Альбом"
         name="album"
         value={formValues.album}
         onChange={handleInputChange}
@@ -124,7 +124,7 @@ export default function AddSong({ onAddSong }) {
       <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
         <TextField
           fullWidth
-          label="Year"
+          label="Год выпуска"
           name="year"
           type="number"
           value={formValues.year}
@@ -133,7 +133,7 @@ export default function AddSong({ onAddSong }) {
         />
         <TextField
           fullWidth
-          label="Duration (seconds)"
+          label="Длина (в секундах))"
           name="duration"
           type="number"
           value={formValues.duration}
@@ -145,7 +145,7 @@ export default function AddSong({ onAddSong }) {
       <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
         <TextField
           fullWidth
-          label="Tempo (BPM)"
+          label="Темп (ударов в минуту / BPM)"
           name="tempo"
           type="number"
           value={formValues.tempo}
@@ -154,7 +154,7 @@ export default function AddSong({ onAddSong }) {
         />
         <TextField
           fullWidth
-          label="Popularity (0-100)"
+          label="Популярность (0-100)"
           name="popularity"
           type="number"
           value={formValues.popularity}
@@ -167,11 +167,11 @@ export default function AddSong({ onAddSong }) {
       <Divider sx={{ my: 3 }} />
       
       {/* Audio Features */}
-      <Typography variant="h6" gutterBottom>Audio Features</Typography>
+      <Typography variant="h6" gutterBottom>Параметры аудио</Typography>
       <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
         <TextField
           fullWidth
-          label="Acousticness (0.0-1.0)"
+          label="Акустичность (0.0-1.0)"
           name="acousticness"
           type="number"
           value={formValues.acousticness}
@@ -181,7 +181,7 @@ export default function AddSong({ onAddSong }) {
         />
         <TextField
           fullWidth
-          label="Danceability (0.0-1.0)"
+          label="Танцевальность (0.0-1.0)"
           name="danceability"
           type="number"
           value={formValues.danceability}
@@ -194,7 +194,7 @@ export default function AddSong({ onAddSong }) {
       <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
         <TextField
           fullWidth
-          label="Energy (0.0-1.0)"
+          label="Энергичность (0.0-1.0)"
           name="energy"
           type="number"
           value={formValues.energy}
@@ -204,7 +204,7 @@ export default function AddSong({ onAddSong }) {
         />
         <TextField
           fullWidth
-          label="Liveness (0.0-1.0)"
+          label="Живость (0.0-1.0)"
           name="liveness"
           type="number"
           value={formValues.liveness}
@@ -217,7 +217,7 @@ export default function AddSong({ onAddSong }) {
       <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
         <TextField
           fullWidth
-          label="Speechiness (0.0-1.0)"
+          label="Разговорность (0.0-1.0)"
           name="speechiness"
           type="number"
           value={formValues.speechiness}
@@ -227,7 +227,7 @@ export default function AddSong({ onAddSong }) {
         />
         <TextField
           fullWidth
-          label="Instrumentalness (0.0-1.0)"
+          label="Инструментальность (0.0-1.0)"
           name="instrumentalness"
           type="number"
           value={formValues.instrumentalness}
@@ -240,7 +240,7 @@ export default function AddSong({ onAddSong }) {
       <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
         <TextField
           fullWidth
-          label="Valence (0.0-1.0)"
+          label="Позитивность (0.0-1.0)"
           name="valence"
           type="number"
           value={formValues.valence}
@@ -250,7 +250,7 @@ export default function AddSong({ onAddSong }) {
         />
         <TextField
           fullWidth
-          label="Loudness (dB)"
+          label="Громкость (dB)"
           name="loudness"
           type="number"
           value={formValues.loudness}
@@ -262,15 +262,15 @@ export default function AddSong({ onAddSong }) {
       <Divider sx={{ my: 3 }} />
       
       {/* Musical Properties */}
-      <Typography variant="h6" gutterBottom>Musical Properties</Typography>
+      <Typography variant="h6" gutterBottom>Музыкальные характеристики</Typography>
       <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
         <FormControl fullWidth margin="normal">
-          <InputLabel>Key</InputLabel>
+          <InputLabel>Тональность (нота)</InputLabel>
           <Select
             name="key"
             value={formValues.key}
             onChange={handleInputChange}
-            label="Key"
+            label="Тональность (нота)"
           >
             {keys.map((key) => (
               <MenuItem key={key} value={key}>{key}</MenuItem>
@@ -279,12 +279,12 @@ export default function AddSong({ onAddSong }) {
         </FormControl>
         
         <FormControl fullWidth margin="normal">
-          <InputLabel>Mode</InputLabel>
+          <InputLabel>Тональность (мажор/минор)</InputLabel>
           <Select
             name="mode"
             value={formValues.mode}
             onChange={handleInputChange}
-            label="Mode"
+            label="Тональность (мажор/минор)"
           >
             {modes.map((mode) => (
               <MenuItem key={mode} value={mode}>{mode}</MenuItem>
@@ -293,12 +293,12 @@ export default function AddSong({ onAddSong }) {
         </FormControl>
         
         <FormControl fullWidth margin="normal">
-          <InputLabel>Time Signature</InputLabel>
+          <InputLabel>Размер такта</InputLabel>
           <Select
             name="signature"
             value={formValues.signature}
             onChange={handleInputChange}
-            label="Time Signature"
+            label="Размер такта"
           >
             {signatures.map((sig) => (
               <MenuItem key={sig} value={sig}>{sig}</MenuItem>
@@ -315,7 +315,7 @@ export default function AddSong({ onAddSong }) {
         fullWidth
         sx={{ mt: 4, py: 2 }}
       >
-        {isSubmitting ? 'Adding...' : 'Add Song'}
+        {isSubmitting ? 'Загрузка...' : 'Добавить'}
       </Button>
       
       <Snackbar

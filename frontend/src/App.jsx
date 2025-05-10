@@ -76,11 +76,11 @@ export default function App() {
     setLoading(true);
     try {
       const response = await addSong(songData);
-      setSnackbarMessage(`Song: ${songData.artist} - ${songData.track} was successfully added`);
+      setSnackbarMessage(`Трек: ${songData.artist} - ${songData.track} успешно добавлен`);
       setSnackbarOpen(true);
       return response.data;
     } catch (error) {
-      setSnackbarMessage('Failed to add song. Please try again.');
+      setSnackbarMessage('Ошибка загрузки трека');
       setSnackbarOpen(true);
       throw error;
     } finally {
@@ -113,7 +113,7 @@ export default function App() {
   };
 
   const resetUserData = () => {
-    if (window.confirm('Are you sure you want to reset all your preferences and playlists?')) {
+    if (window.confirm('Вы уверены, что хотите очистить плейлисты и данные о предпочтениях?')) {
       localStorage.removeItem(STORAGE_KEYS.PREFERENCES);
       localStorage.removeItem(STORAGE_KEYS.LIKED);
       localStorage.removeItem(STORAGE_KEYS.DISLIKED);
@@ -142,7 +142,7 @@ export default function App() {
                 setShowAddSong(false);
               }}
             >
-              Recommendations
+              Рекомендации
             </Button>
             <Button
               variant={activeTab === 'playlists' ? 'contained' : 'outlined'}
@@ -151,7 +151,7 @@ export default function App() {
                 setShowAddSong(false);
               }}
             >
-              My Playlists
+              Плейлисты
             </Button>
             <Button
               variant={showAddSong ? 'contained' : 'outlined'}
@@ -160,7 +160,7 @@ export default function App() {
                 setActiveTab('recommendations');
               }}
             >
-              Add New Song
+              Добавить трек
             </Button>
           </Box>
 

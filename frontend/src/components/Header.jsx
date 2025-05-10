@@ -22,7 +22,7 @@ export default function Header({ onReset, onSearch }) {
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ mr: 2 }}>
-          Music Recommender
+          Рекомендательная система
         </Typography>
         
         <form onSubmit={handleSearch} style={{ 
@@ -50,7 +50,7 @@ export default function Header({ onReset, onSearch }) {
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="Search tracks or artists..."
+              placeholder="Поиск по трекам или исполнителям..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               style={{
@@ -65,13 +65,13 @@ export default function Header({ onReset, onSearch }) {
               disabled={isSearching || !searchQuery.trim()}
               style={{ minWidth: '80px' }}
             >
-              {isSearching ? <CircularProgress size={24} color="inherit" /> : 'Search'}
+              {isSearching ? <CircularProgress size={24} color="inherit" /> : 'Искать'}
             </Button>
           </div>
         </form>
         
         <Button color="inherit" onClick={onReset} sx={{ ml: 2 }}>
-          Reset My Data
+          Очистить данные
         </Button>
       </Toolbar>
     </AppBar>
