@@ -1,0 +1,4 @@
+{
+  "healthCheckPath": "/health",
+  "healthCheckTimeout": 120
+}

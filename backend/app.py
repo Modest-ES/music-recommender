@@ -16,7 +16,7 @@ CORS(app, resources={
             "http://127.0.0.1:5173",   # Vite dev alternative
             "http://localhost",         # Docker frontend (port 80)
             "http://127.0.0.1",        # Docker frontend alternative
-            # Add other domains if needed (e.g., production URL)
+            "https://*.railway.app"
         ]
     }
 })
@@ -56,9 +56,9 @@ song_manager = SongManager(central_df)
 #         "track_count": count
 #     })
 
-@app.route('/api/health', methods=['GET'])
+@app.route('/health')
 def health_check():
-    return jsonify({"status": "healthy", "data_source": os.path.basename(DATA_PATH)})
+    return jsonify({"status": "healthy"}), 200
 
 @app.route('/api/recommend/initial', methods=['POST'])
 def initial_recommend():
