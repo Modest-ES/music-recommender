@@ -11,7 +11,13 @@ from contextlib import closing
 app = Flask(__name__)
 CORS(app, resources={
     r"/api/*": {
-        "origins": ["http://localhost:5173", "http://127.0.0.1:5173"]
+        "origins": [
+            "http://localhost:5173",    # Vite dev server
+            "http://127.0.0.1:5173",   # Vite dev alternative
+            "http://localhost",         # Docker frontend (port 80)
+            "http://127.0.0.1",        # Docker frontend alternative
+            # Add other domains if needed (e.g., production URL)
+        ]
     }
 })
 
