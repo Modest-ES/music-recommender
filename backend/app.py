@@ -5,6 +5,8 @@ from models.search import MusicSearcher
 from models.song_manager import SongManager
 import pandas as pd
 import os
+import sqlite3
+from contextlib import closing
 
 app = Flask(__name__)
 CORS(app, resources={
@@ -24,6 +26,29 @@ central_df = pd.read_parquet(DATA_PATH)
 recommender = MusicRecommender(central_df)
 searcher = MusicSearcher(central_df)
 song_manager = SongManager(central_df)
+
+# DB_PATH = os.path.join(os.path.dirname(__file__), 'data', 'tracksdb.db')
+
+# def get_db():
+#     """Helper function to get database connection"""
+#     return sqlite3.connect(DB_PATH)
+
+# Initialize services with database connection
+# recommender = MusicRecommender(DB_PATH)
+# searcher = MusicSearcher(DB_PATH)
+# song_manager = SongManager(DB_PATH)
+
+# @app.route('/api/health', methods=['GET'])
+# def health_check():
+#     with closing(get_db()) as conn:
+#         cursor = conn.cursor()
+#         cursor.execute("SELECT COUNT(*) FROM tracks")
+#         count = cursor.fetchone()[0]
+#     return jsonify({
+#         "status": "healthy", 
+#         "data_source": "SQLite",
+#         "track_count": count
+#     })
 
 @app.route('/api/health', methods=['GET'])
 def health_check():
@@ -87,4 +112,4 @@ def add_song():
         }), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=10000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)

@@ -1,5 +1,110 @@
-import pandas as pd
+import sqlite3
 from typing import Dict, Tuple
+from contextlib import closing
+
+# class SongManager:
+#     def __init__(self, db_path):
+#         self.db_path = db_path
+#         self._create_tables()
+
+#     def _get_db_connection(self):
+#         """Get a new database connection"""
+#         conn = sqlite3.connect(self.db_path)
+#         conn.row_factory = sqlite3.Row
+#         return conn
+
+#     def _create_tables(self):
+#         """Ensure tables exist with proper schema"""
+#         with closing(self._get_db_connection()) as conn:
+#             cursor = conn.cursor()
+#             cursor.execute("""
+#                 CREATE TABLE IF NOT EXISTS songs (
+#                     id INTEGER PRIMARY KEY,
+#                     artist TEXT NOT NULL,
+#                     track TEXT NOT NULL,
+#                     album TEXT,
+#                     genre TEXT NOT NULL,
+#                     duration INTEGER,
+#                     year INTEGER,
+#                     tempo INTEGER,
+#                     popularity INTEGER,
+#                     mode TEXT,
+#                     key TEXT,
+#                     signature TEXT,
+#                     acousticness REAL,
+#                     danceability REAL,
+#                     energy REAL,
+#                     instrumentalness REAL,
+#                     liveness REAL,
+#                     loudness REAL,
+#                     speechiness REAL,
+#                     valence REAL
+#                 )
+#             """)
+#             conn.commit()
+
+#     def add_song(self, song_data: Dict) -> Tuple[Dict, int]:
+#         try:
+#             # Validate required fields
+#             if not song_data.get('track') or not song_data.get('artist') or not song_data.get('genre'):
+#                 return {"error": "Track, artist, and genre are required fields"}, 400
+
+#             with closing(self._get_db_connection()) as conn:
+#                 cursor = conn.cursor()
+                
+#                 # Get next ID
+#                 cursor.execute("SELECT MAX(id) FROM songs")
+#                 max_id = cursor.fetchone()[0]
+#                 new_id = 1 if max_id is None else max_id + 1
+
+#                 # Insert new song
+#                 cursor.execute("""
+#                     INSERT INTO songs (
+#                         id, artist, track, album, genre,
+#                         duration, year, tempo, popularity,
+#                         mode, key, signature,
+#                         acousticness, danceability, energy, instrumentalness,
+#                         liveness, loudness, speechiness, valence
+#                     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+#                 """, (
+#                     new_id,
+#                     song_data.get('artist', '').strip(),
+#                     song_data.get('track', '').strip(),
+#                     song_data.get('album', 'NoData').strip(),
+#                     song_data.get('genre', '').strip(),
+#                     int(song_data.get('duration', 0)),
+#                     int(song_data.get('year', 0)),
+#                     int(song_data.get('tempo', 0)),
+#                     int(song_data.get('popularity', 0)),
+#                     song_data.get('mode', 'NoData'),
+#                     song_data.get('key', 'NoData'),
+#                     song_data.get('signature', 'NoData'),
+#                     float(song_data.get('acousticness', 0.0)),
+#                     float(song_data.get('danceability', 0.0)),
+#                     float(song_data.get('energy', 0.0)),
+#                     float(song_data.get('instrumentalness', 0.0)),
+#                     float(song_data.get('liveness', 0.0)),
+#                     float(song_data.get('loudness', -6.0)),
+#                     float(song_data.get('speechiness', 0.0)),
+#                     float(song_data.get('valence', 0.0))
+#                 ))
+#                 conn.commit()
+
+#                 # Return the inserted song
+#                 cursor.execute("SELECT * FROM songs WHERE id = ?", (new_id,))
+#                 added_song = dict(cursor.fetchone())
+#                 return added_song, 201
+
+#         except Exception as e:
+#             print(f"Error adding song: {str(e)}")
+#             return {"error": "Could not add song", "details": str(e)}, 500
+
+#     def get_total_songs(self):
+#         """Helper method to get total song count"""
+#         with closing(self._get_db_connection()) as conn:
+#             cursor = conn.cursor()
+#             cursor.execute("SELECT COUNT(*) FROM songs")
+#             return cursor.fetchone()[0]
 
 class SongManager:
     def __init__(self, outer_dataframe):
