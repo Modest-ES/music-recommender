@@ -3,23 +3,19 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
+  build: {
+    assetsInlineLimit: 0, // Ensure files aren't inlined
+    rollupOptions: {
+      output: {
+        assetFileNames: 'assets/[name]-[hash][extname]',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+      },
+    },
+  },
   server: {
     proxy: {
       '/api': 'http://localhost:5000', // Flask backend
     },
   },
 });
-
-// export default defineConfig({
-//   plugins: [react()],
-//   server: {
-//     proxy: {
-//       '/api': {
-//         target: 'http://127.0.0.1:5000', // Explicitly use 127.0.0.1
-//         changeOrigin: true,
-//         secure: false,
-//         rewrite: (path) => path.replace(/^\/api/, ''),
-//       },
-//     },
-//   },
-// });
